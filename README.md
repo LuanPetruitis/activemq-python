@@ -14,7 +14,7 @@ Permitir ordenar por prioridade adicionar a linha a seguir como na imagem
 <policyEntry queue=">" prioritizedMessages="true" useCache="false" expireMessagesPeriod="0" queuePrefetch="1" />
 ```
 
-![Permitir ordenar por prioridade](./priority.jpeg)
+![Permitir ordenar por prioridade](./images/priority.jpeg)
 
 ---
 
@@ -32,7 +32,7 @@ Permitir adicionar a politica de acesso adicionar as linhas a seguir como na ima
 </plugins>
 ```
 
-![Permitir ordenar por prioridade](./politica.jpeg)
+![Permitir ordenar por prioridade](./images/politica.jpeg)
 
 ## Rode o projeto
 
@@ -86,12 +86,12 @@ Permitir adicionar a politica de acesso adicionar as linhas a seguir como na ima
 # Funcionamento
 
 - Lendo tópicos com filtro
-  ![Lendo tópicos com filtro](./topics_with_filter.jpeg)
+  ![Lendo tópicos com filtro](./images/topics_with_filter.jpeg)
 
 - Lendo tópicos sem filtro
 
-  ![Lendo tópicos sem filtro](./topics_without_filter.jpeg)
+  ![Lendo tópicos sem filtro](./images/topics_without_filter.jpeg)
 
 - Lendo fila ordenada por prioridade
 
-  ![Lendo fila ordenada por prioridade](./queue_ordered.jpeg)
+  ![Lendo fila ordenada por prioridade](./images/queue_ordered.jpeg)
