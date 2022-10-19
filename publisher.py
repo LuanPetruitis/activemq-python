@@ -13,7 +13,7 @@ port = os.getenv("ACTIVEMQ_PORT") or 8161
 
 
 # Nessa variável é definido a quantidade de mensagens que deseja enviar, caso deseje gerar uma quantidade de mensagens maior é necessário apenas aumentar esse número 
-messages = 1000
+messages = 50
 
 # Aqui é onde é feito a conexão com activeMQ utilizando a lib stomp
 conn = stomp.Connection()

@@ -1,3 +1,4 @@
+import sys
 import os
 import time
 import stomp
@@ -9,8 +10,8 @@ password = os.getenv("ACTIVEMQ_PASSWORD") or "admin"
 host = os.getenv("ACTIVEMQ_HOST") or "localhost"
 port = os.getenv("ACTIVEMQ_PORT") or 8161
 
-# Classe para ler as mensagens 
-class ListennerLogs(object):
+# Classe para ler as mensagens de Dias das Crianças
+class ListennerOrdersKids(object):
     def __init__(self):
         self.msg_list = []
 
@@ -20,18 +21,16 @@ class ListennerLogs(object):
     def on_message(self, message):
         print(message.body)
         
-
 # Conecta com ActiveMQ
 conn = stomp.Connection()
-lst = ListennerLogs()
+lst = ListennerOrdersKids()
 
 # Mostrar a Classe que irá escutar para ver se tem mensagem e executar a ação. 
 conn.set_listener('', lst)
 conn.connect(user, password, wait=True)
 
-# Ler fila para pegar os logs ordenados pela prioridade 
-conn.subscribe(destination='/queue/logs', id=1, ack='auto')
+# Ler os topics sem filtro 
+conn.subscribe(destination='/topic/pedidos', id=1, ack='auto')
 
-# Loop infinito para manter conectado e pronto para ouvir mensagens
 while True:
     time.sleep(10)

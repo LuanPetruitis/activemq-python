@@ -1,5 +1,3 @@
-from email.quoprimime import body_check
-import sys
 import os
 import time
 import stomp
