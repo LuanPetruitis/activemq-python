@@ -11,7 +11,7 @@ port = os.getenv("ACTIVEMQ_PORT") or 8161
 destination = sys.argv[1:2] or ["/topic/event"]
 destination = destination[0]
 
-messages = 1000
+messages = 100
 
 
 conn = stomp.Connection()
@@ -37,11 +37,11 @@ for i in range(0, messages):
 
     numero_aleatorio = random.randint(1, 4)
     if erros_dict[numero_aleatorio] == 'WARN':
-        conn.send(body="WARN", destination="/queue/logs", persistent='false', headers={"priority": 1})
+        conn.send(body="WARN", destination="/queue/logs?jms.messagePrioritySupported=true", persistent='false', headers={"priority": 1})
     elif erros_dict[numero_aleatorio] == 'DEBUG':
-        conn.send(body="DEBUG", destination="/queue/logs", persistent='false', headers={"priority": 4})
+        conn.send(body="DEBUG", destination="/queue/logs?jms.messagePrioritySupported=true", persistent='false', headers={"priority": 4})
     elif erros_dict[numero_aleatorio] == 'ERR':
-        conn.send(body="ERR", destination="/queue/logs", persistent='false', headers={"priority": 9})
+        conn.send(body="ERR", destination="/queue/logs?jms.messagePrioritySupported=true", persistent='false', headers={"priority": 9})
     else:
         headers = {}
         
@@ -56,7 +56,7 @@ for i in range(0, messages):
             # headers={"type":"Criança"}
         #     conn.send(body=data, destination="/topic/pedidos", headers=headers)
                 
-        conn.send(body=data, destination="/queue/pedidos", persistent='false', key=key)
+        conn.send(body=data, destination="/topic/pedidos", persistent='false', key=key)
         
     # erros = []
     # promocoes = []

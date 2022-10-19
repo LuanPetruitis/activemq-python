@@ -25,7 +25,7 @@ lst = ListennerOrdersKids()
 conn.set_listener('', lst)
 conn.connect(user, password, wait=True)
 
-conn.subscribe(destination='/queue/pedidos', id=1, ack='auto', headers={'selector':"key = 'C'"})
+conn.subscribe(destination='/topic/pedidos', id=1, ack='auto', headers={'selector':"key = 'C'"})
 time.sleep(10)
 
 while True:

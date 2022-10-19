@@ -24,8 +24,8 @@ lst = ListennerOrders()
 conn.set_listener('', lst)
 conn.connect(user, password, wait=True)
 
-conn.subscribe(destination='/queue/promocoes', id=1, ack='auto')
-time.sleep(10)
+# , headers={'order':"'priority': 1"}
+conn.subscribe(destination='/queue/logs', id=1, ack='auto', headers={'sort':"'priority': 1"})
 
 while True:
     time.sleep(10)
